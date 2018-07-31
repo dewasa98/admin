@@ -9,11 +9,11 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta id="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta id="description" content="">
+    <meta id="author" content="">
 
-    <title>SB Admin - Dashboard</title>
+    <title>Halaman Admin</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,27 +33,19 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+      <a class="navbar-brand mr-1" href="index.html">Halaman Admin</a>
 
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-
-      <!-- Navbar Search -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-          <div class="input-group-append">
-            <button class="btn btn-primary" type="button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
 
       <!-- Navbar -->
       <ul class="navbar-nav ml-auto ml-md-0">
-        
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          </div>
+        </li>
       </ul>
 
     </nav>
@@ -77,36 +69,41 @@
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              Data Table Example</div>
+              List Berita</div>
             <div class="card-body">
-              <div class="table-responsive">
+            <a href="Tambah.php"><button style="margin-right:25px;">Tambah Berita</button></a>
+              <div class="table-responsive">              
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                      <th>id</th>
+                      <th>judul</th>
+                      <th>link</th>
+                      <th>action</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
-                    <tr>
-                      <td>Garrett Winters</td>
-                      <td>Accountant</td>
-                      <td>Tokyo</td>
-                      <td>63</td>
-                      <td>2011/07/25</td>
-                      <td>$170,750</td>
+                  <tbody>                    
+                    <tr>     
+                      <?php
+
+                        $sql = "SELECT * FROM berita";
+                        $query = mysqli_query($db, $sql);
+                        if (!$query) {
+                          printf("Error: %s\n", mysqli_error($db));
+                          exit();
+                      }
+                        while($data = mysqli_fetch_array($query)){
+                          echo "<tr>";
+                          echo "<td>".$data['id']."</td>";
+                          echo "<td>".$data['judul']."</td>";
+                          echo "<td>".$data['link']."</td>";
+                          echo "<td>";
+                          echo "<a href='Update.php?id=".$data['id']."'><button style='margin-right:25px;'>Update</button></a>";
+                          echo "<a href='Delete.php?id=".$data['id']."'><button style='margin-right:25px;'>Delete</button></a>";
+                          echo "</td>";
+                          echo "</tr>";
+                        }
+                        ?>
                     </tr>                    
                   </tbody>
                 </table>
