@@ -1,3 +1,20 @@
+<?php
+session_start();
+require 'config.php';
+$db = mysqli_connect("localhost", "root", "", "kp");
+if (isset($_POST['submit'])){
+$username=$_POST['username'];
+$password=$_POST['password'];
+$query=mysqli_query($db,"select * from admin where username='$username' and password='$password'");
+$sql=mysqli_num_rows($query);
+if($sql==TRUE){
+        $_SESSION['username']=$username;
+        header("Location: index.php");
+}else{
+        echo "Login Failed";
+}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,17 +45,17 @@
       <div class="card card-login mx-auto mt-5">
         <div class="card-header">Login</div>
         <div class="card-body">
-          <form>
+          <form action="login.php" method="post" name="login">
             <div class="form-group">
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
-                <label for="inputEmail">Email address</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="username" required="required" autofocus="autofocus">
+                <label for="username">username</label>
               </div>
             </div>
             <div class="form-group">
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
-                <label for="inputPassword">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="password" required="required">
+                <label for="password">password</label>
               </div>
             </div>
             <div class="form-group">
@@ -49,7 +66,7 @@
                 </label>
               </div>
             </div>
-            <a class="btn btn-primary btn-block" href="index.html">Login</a>
+            <input type="submit" name="submit" value="Login" class="btn btn-primary btn-block"/>
         </div>
       </div>
     </div>

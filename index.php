@@ -1,3 +1,11 @@
+<?php
+session_start();
+require_once "config.php";
+if($_SESSION['username']==NULL){
+  header("location: login.php");
+} else {
+
+?>
 <!DOCTYPE html>
 <?php
   include "config.php";
@@ -138,7 +146,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="logout.php">Logout</a>
           </div>
         </div>
       </div>
@@ -166,3 +174,4 @@
   </body>
 
 </html>
+                      <?php } ?>
