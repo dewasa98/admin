@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Update a student</title>
+    <title>Update Berita</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <?php
