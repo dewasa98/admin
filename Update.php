@@ -13,17 +13,20 @@ $query = mysqli_query($db, $sql);
 $data = mysqli_fetch_assoc($query);
 ?>
 <body>
-    <form action="Update.php" method="post">
+<div style="width:400px; margin-top:10%; margin-right:auto; margin-left:auto; border:1px solid #000;">
+    <form action="Update.php" method="post" align="center">
+    <h1>Form Tambah Berita</h1>
+        <hr>
         <p>
-            id :
-            <input type="text" name="id" value="<?php echo $data['id'] ?>"/>
+            ID Berita :
+            <input type="text" name="id" value="<?php echo $data['id'] ?>" readonly>
         </p>
         <p>
-            judul :
+            Judul :
             <input type="text" name="judul" value="<?php echo $data['judul'] ?>"/>
         </p>
         <p>
-            link :
+            Link Berita:
             <input type="text" name="link" value="<?php echo $data['link'] ?>"/>
         </p>
         <p>
@@ -50,5 +53,6 @@ $data = mysqli_fetch_assoc($query);
 
 
     ?>
+    </div>
 </body>
 </html>

@@ -4,23 +4,28 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <form action="Tambah.php" method="post">
+<div style="width:400px; margin-top:10%; margin-right:auto; margin-left:auto; border:1px solid #000;">
+    <form action="Tambah.php" method="post" align="center">
+        <h1>Form Tambah Berita</h1>
+        <hr>
         <p>
-            id :
+            ID :
             <input type="text" name="id"/>
         </p>
         <p>
-            judul :
+            Judul :
             <input type="text" name="judul"/>
         </p>
         <p>
-            link :
+            Link Berita :
             <input type="text" name="link"/>
         </p>
         
         <p>
             <input type="submit" name="submit" value="submit"/>
-    </form>
+            </form>
+
+
     <?php
 
 	// Check If form submitted, insert form data into users table.
@@ -41,6 +46,6 @@
 		echo "User added successfully. <a href='index.php'>Kembali ke Awal</a>";
 	}
 	?>
-
+    </div>
 </body>
 </html>
