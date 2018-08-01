@@ -15,7 +15,7 @@ $data = mysqli_fetch_assoc($query);
 <body>
 <div style="width:400px; margin-top:10%; margin-right:auto; margin-left:auto; border:1px solid #000;">
     <form action="Update.php" method="post" align="center">
-    <h1>Form Tambah Berita</h1>
+    <h1>Form Update Berita</h1>
         <hr>
         <p>
             ID Berita :
