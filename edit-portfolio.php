@@ -21,13 +21,6 @@ if($_SESSION['username']==NULL){
     <meta id="description" content="">
     <meta id="author" content="">
 
-    <style>
-      img{
-        width : 200px;
-        height : 200px;
-      }
-    </style>
-
     <title>Halaman Admin</title>
 
     <!-- Bootstrap core CSS-->
@@ -48,7 +41,7 @@ if($_SESSION['username']==NULL){
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.php">Halaman Admin</a>
+      <a class="navbar-brand mr-1" href="index.html">Halaman Admin</a>
 
 
       <!-- Navbar -->
@@ -84,9 +77,9 @@ if($_SESSION['username']==NULL){
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-table"></i>
-              List Berita</div>
+              List Portfolio</div>
             <div class="card-body">
-            <a href="Tambah.php"><button style="margin-right:25px;">Tambah Berita</button></a>
+            <a href="Tambah_g.php"><button style="margin-right:25px;">Edit portfolio</button></a>
               <div class="table-responsive">              
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -101,7 +94,7 @@ if($_SESSION['username']==NULL){
                     <tr>     
                       <?php
 
-                        $sql = "SELECT * FROM berita";
+                        $sql = "SELECT * FROM portfolio";
                         $query = mysqli_query($db, $sql);
                         if (!$query) {
                           printf("Error: %s\n", mysqli_error($db));
@@ -134,72 +127,7 @@ if($_SESSION['username']==NULL){
 
     </div>
     <!-- /#wrapper -->
-    <!-- edit gambar -->
 
-        <div id="wrapper">
-
-    <div id="content-wrapper">
-
-      <div class="container-fluid">
-        
-        <!-- DataTables Example -->
-        <div class="card mb-3">
-          <div class="card-header">
-            <i class="fas fa-table"></i>
-            List Portfolio</div>
-          <div class="card-body">
-          <a href="tambah-gambar.php"><button style="margin-right:25px;">Tambah portfolio</button></a>
-          <p></p>
-            <div class="table-responsive">              
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                  <tr>
-                    <th>id</th>
-                    <th>judul</th>
-                    <th>gambar</th>
-                    <th>deskripsi</th>
-                    <th>action</th>
-                  </tr>
-                </thead>
-                <tbody>                    
-                  <tr>     
-                    <?php
-
-                      $sql = "SELECT * FROM portfolio";
-                      $query = mysqli_query($db, $sql);
-                      if (!$query) {
-                        printf("Error: %s\n", mysqli_error($db));
-                        exit();
-                    }
-                    
-
-                      while($data = mysqli_fetch_array($query)){
-                        echo "<tr>";
-                        echo "<td>".$data['id']."</td>";
-                        echo "<td>".$data['judul']."</td>";
-                        echo "<td><img src=images/".$data['gambar']."></td>";
-                        echo "<td>".$data['deskripsi']."</td>";       
-                        echo "<td>";
-                        echo "<a href='update-gambar.php?id=".$data['id']."'><button style='margin-right:25px;'>Update</button></a>";                                                                 
-                        echo "<a href='delete-gambar.php?id=".$data['id']."'><button style='margin-right:25px;'>Delete</button></a>";
-                        echo "</td>";
-                        echo "</tr>";
-                      }
-                      ?>
-                  </tr>                    
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      <!-- /.container-fluid -->
-
-    </div>
-    <!-- /.content-wrapper -->
-
-    </div>
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
