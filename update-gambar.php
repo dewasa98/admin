@@ -6,11 +6,12 @@
 <?php
 include("config.php");
 //ambil id dari query string
-$id = $_GET['id'];
 // buat query untuk ambil data dari database
+$id = $_GET['id'];
 $sql = "SELECT * FROM portfolio WHERE id=$id";
 $query = mysqli_query($db, $sql);
 $data = mysqli_fetch_assoc($query);
+
 ?>
 <body>
 <div style="width:400px; margin-top:10%; margin-right:auto; margin-left:auto; border:1px solid #000;">
@@ -62,7 +63,8 @@ $data = mysqli_fetch_assoc($query);
         
     	$sql = "UPDATE portfolio SET id='$id', judul='$judul', deskripsi='$deskripsi', gambar='$gambar' WHERE id=$id";
     	$query = mysqli_query($db, $sql);
-        echo "Gambar berhasil dimasukkan. <a href='index.php'>Kembali ke Awal</a>";
+        
+        header ("location: index.php");
     }
 
 
