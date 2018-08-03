@@ -200,6 +200,49 @@ if($_SESSION['username']==NULL){
     <!-- /.content-wrapper -->
 
     </div>
+
+    <!-- edit video -->
+    <div class="card mb-3">
+          <div class="card-header">
+            <i class="fas fa-table"></i>
+            Video Panduan</div>
+          <div class="card-body">
+    <div class="table-responsive">              
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+      <thead>
+        <tr>
+          <th>judul</th>
+          <th>link</th>
+          <th>action</th>
+        </tr>
+      </thead>
+      <tbody>                    
+        <tr>     
+          <?php
+
+            $sql = "SELECT * FROM video";
+            $query = mysqli_query($db, $sql);
+            if (!$query) {
+              printf("Error: %s\n", mysqli_error($db));
+              exit();
+          }          
+            $data = mysqli_fetch_array($query);
+              echo "<tr>";
+              echo "<td>".$data['judul']."</td>";
+              echo "<td>".$data['link']."</td>";
+              echo "<td>";
+              echo "<a href='update-video.php?id=1'><button style='margin-right:25px;'>Update</button></a>";
+              echo "</td>";
+              echo "</tr>";
+            ?>
+        </tr>                    
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+</div>
+
     <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
       <i class="fas fa-angle-up"></i>
